@@ -13,7 +13,7 @@
         if (calculation) {
             try {
                 const result = eval(calculation);
-                document.write(result);
+                window.location.href = 'minecraft-plugin://result=' + result;
             } catch (error) {
                 document.write('Error: ' + error.message);
             }
