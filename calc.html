@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <script>
+        // Számítás fogadása URL paraméterből
+        const urlParams = new URLSearchParams(window.location.search);
+        const calculation = urlParams.get('calculation');
+        
+        if (calculation) {
+            try {
+                // Számítás végrehajtása
+                const result = eval(calculation);
+                // Eredmény visszaküldése a Minecraft plugin-nak
+                window.location.href = 'minecraft-plugin://result=' + result;
+            } catch (error) {
+                console.error('Hiba történt a számítás során:', error);
+                // Hiba visszaküldése a Minecraft plugin-nak
+                window.location.href = 'minecraft-plugin://error=' + error.message;
+            }
+        } else {
+            console.error('No calculation is specified in the URL!');
+        }
+    </script>
+</body>
+</html>
